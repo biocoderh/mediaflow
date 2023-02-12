@@ -1,0 +1,20 @@
+[Desktop Entry]
+Name=Media Flow
+Comment=See information about power management inhibition
+Keywords=Media;Inhibition;System;Spotify;
+Icon=exception
+Type=Service
+X-KDE-FormFactors=desktop
+X-KDE-ServiceTypes=Plasma/Applet
+X-KDE-PluginInfo-Author=Biocoder
+X-KDE-PluginInfo-Category=System Information
+X-KDE-PluginInfo-Email=biocoder.h@gmail.com
+X-KDE-PluginInfo-EnabledByDefault=true
+X-KDE-PluginInfo-License=GPL-2.0+
+X-KDE-PluginInfo-Name=org.kde.plasma.mediaflow
+X-KDE-PluginInfo-Version=1.0
+X-Plasma-API=declarativeappletscript
+X-Plasma-DBusActivationService=org.kde.Solid.PowerManagement
+X-Plasma-MainScript=ui/main.qml
+X-Plasma-NotificationArea=true
+X-Plasma-NotificationAreaCategory=SystemServices
