@@ -121,12 +121,14 @@ Item {
 
         property int spotifyInhibitionCookie: -1
 
+        property var blacklist: ['@multiplex', 'plasma-browser-integration']
+
         engine: "mpris2"
         connectedSources: sources
 
         onSourceAdded: {
             disconnectSource(source);
-            if (source != '@multiplex') {
+            if (!blacklist.includes(source)) {
                 connectSource(source);
             }
         }
@@ -140,7 +142,7 @@ Item {
         }
 
         onNewData: (key, data) => {
-            if (key != '@multiplex') {
+            if (!blacklist.includes(key)) {
                 const Playing = (data.PlaybackStatus === 'Playing');
 
                 state[key] = {
