@@ -11,5 +11,11 @@
       <default>true</default>
     </entry>
   </group>
+  <group name="General">
+    <entry name="autoResume" type="bool">
+      <label>If true, previous played source would be resumed.</label>
+      <default>true</default>
+    </entry>
+  </group>
 
 </kcfg>

@@ -5,6 +5,7 @@ Based on [pminhibition](https://github.com/popov895/pminhibition)
 This KDE Plasma 5 applet let you see information about power management inhibition and media sources through mpris2. Also:
 
  - Auto pause feature (can be disabled): automatically pausing previous media player when another started playing.
+ - Auto resume feature (can be disabled): automatically resume previous media player (which auto paused).
  - Spotify inhibition: preventing sleep when spotify is playing.
 
 ![Screenshot](screenshot.png)

@@ -118,6 +118,7 @@ Item {
 
         property var state: ({})
         property var active: false
+        property var previousActive: false
 
         property int spotifyInhibitionCookie: -1
 
@@ -152,17 +153,25 @@ Item {
 
                 if (Plasmoid.configuration.autoPause) {
                     if (!active && Playing) {
-                        active = key 
+                        active = key;
                     }
 
                     if (key === active && !Playing) {
-                        active = false
+                        active = false;
+
+                        if (Plasmoid.configuration.autoResume && previousActive) {
+                            var service = serviceForSource(previousActive);
+                            var operation = service.operationDescription("Play");
+                            service.startOperationCall(operation);
+                            previousActive = false;
+                        }
                     }
 
                     if (Playing && active && key != active) {
                         var service = serviceForSource(active);
                         var operation = service.operationDescription("Pause");
                         service.startOperationCall(operation);
+                        previousActive = active;
                         active = key;
                     }
                 }
@@ -212,6 +221,14 @@ Item {
         }
     }
 
+    function action_autoResume() {
+        if (!Plasmoid.configuration.autoResume) {
+            Plasmoid.configuration.autoResume = true;
+        } else {
+            Plasmoid.configuration.autoResume = false;
+        }
+    }
+
     Component.onCompleted: {
         root.updateInhibitingAppList();
         root.updateMediaAppList();
@@ -219,5 +236,9 @@ Item {
         Plasmoid.setAction("autoPause", i18n("Auto pause previous player"), "media-playback-pause");
         Plasmoid.action("autoPause").checkable = true;
         Plasmoid.action("autoPause").checked = Qt.binding(() => Plasmoid.configuration.autoPause);
+
+        Plasmoid.setAction("autoResume", i18n("Auto resume previous player"), "media-playback-start");
+        Plasmoid.action("autoResume").checkable = true;
+        Plasmoid.action("autoResume").checked = Qt.binding(() => Plasmoid.configuration.autoResume);
     }
 }
