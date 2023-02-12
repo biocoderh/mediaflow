@@ -8,6 +8,8 @@ This KDE Plasma 5 applet let you see information about power management inhibiti
  - Auto resume feature (can be disabled): automatically resume previous media player (which auto paused).
  - Spotify inhibition: preventing sleep when spotify is playing.
 
+Available in the [KDE Store](https://store.kde.org/p/1986300).
+
 ![Screenshot](screenshot.png)
 
 Install:
